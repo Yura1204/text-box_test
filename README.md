@@ -2,10 +2,7 @@
 
 ## Запуск тестов
 
-1. Запустите тесты с помощью Maven:
+1. Запустите тесты с помощью Maven: `mvn clean test`
 
-`mvn clean test`
 
-2. Сгенерируйте отчет Allure:
-
-`allure serve target/allure-results`
+2. Сгенерируйте отчет Allure: `allure serve target/allure-results`
