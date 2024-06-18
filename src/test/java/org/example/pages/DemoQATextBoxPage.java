@@ -1,52 +1,64 @@
 package org.example.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class DemoQATextBoxPage {
     private WebDriver driver;
 
-    // Локаторы для элементов формы
-    private By userNameField = By.id("userName");
-    private By userEmailField = By.id("userEmail");
-    private By currentAddressField = By.id("currentAddress");
-    private By permanentAddressField = By.id("permanentAddress");
-    private By submitButton = By.id("submit");
-    private By outputDiv = By.id("output");
+    @FindBy(id = "userName")
+    private WebElement userNameField;
+
+    @FindBy(id = "userEmail")
+    private WebElement userEmailField;
+
+    @FindBy(id = "currentAddress")
+    private WebElement currentAddressField;
+
+    @FindBy(id = "permanentAddress")
+    private WebElement permanentAddressField;
+
+    @FindBy(id = "submit")
+    private WebElement submitButton;
+
+    @FindBy(id = "output")
+    private WebElement outputDiv;
 
     // Конструктор
     public DemoQATextBoxPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     // Метод для заполнения поля имени пользователя
     public void setUserName(String name) {
-        driver.findElement(userNameField).sendKeys(name);
+        userNameField.sendKeys(name);
     }
 
     // Метод для заполнения поля электронной почты пользователя
     public void setUserEmail(String email) {
-        driver.findElement(userEmailField).sendKeys(email);
+        userEmailField.sendKeys(email);
     }
 
     // Метод для заполнения поля текущего адреса
     public void setCurrentAddress(String address) {
-        driver.findElement(currentAddressField).sendKeys(address);
+        currentAddressField.sendKeys(address);
     }
 
     // Метод для заполнения поля постоянного адреса
     public void setPermanentAddress(String address) {
-        driver.findElement(permanentAddressField).sendKeys(address);
+        permanentAddressField.sendKeys(address);
     }
 
     // Метод для нажатия кнопки отправки
     public void clickSubmit() {
-        driver.findElement(submitButton).click();
+        submitButton.click();
     }
 
     // Метод для получения текста вывода
     public String getOutputText() {
-        return driver.findElement(outputDiv).getText();
+        return outputDiv.getText();
     }
 }
-
